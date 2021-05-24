@@ -21,7 +21,7 @@ public class WxMessageController {
 
 
     @PostMapping
-    public MessageVO messageVO(@RequestBody Message message){
+    public MessageVO messageVO(@RequestBody Message message) throws IllegalAccessException {
 
         System.out.println(message);
         String msg = messageService.MessageReport(message);
