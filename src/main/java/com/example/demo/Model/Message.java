@@ -9,6 +9,7 @@ import java.util.Date;
 public class Message {
 
     private String Openid;
+
     private Integer Healthcondition;
     private Integer Temperature = 0;
     private Integer Symptom = 0;

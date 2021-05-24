@@ -65,9 +65,6 @@ public class MessageServiceImpl implements MessageService{
             abnormalRepository.save(abnormalDao);
 
         }
-
-
-
         return  "Successful Update To DB";
     }
 
