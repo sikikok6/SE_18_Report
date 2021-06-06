@@ -23,8 +23,7 @@ public class Message {
     private Integer Peoplecontact = 0;
     private Integer Communitycontact = 0;
 
-    private double Longitude;
-    private double Latitude;
+    private String Location;
     @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss",timezone = "GMT+8")
     private Date Time;
 }

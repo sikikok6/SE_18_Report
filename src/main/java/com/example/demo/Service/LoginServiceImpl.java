@@ -31,7 +31,16 @@ public class LoginServiceImpl implements LoginService {
         if(basicInfoDaoOptional.isPresent()){
             System.out.println("Login:User Is Present");
             basicInfoDao = basicInfoDaoOptional.get();
-            Jump = 1;
+
+            if(basicInfoDao.getAuth()==0){
+                Jump = 1;
+
+            }else{
+                //TODO 改为2 Auth
+                Jump = 1;
+                System.out.println("Admin");
+            }
+
         }else{
             System.out.println("Login:Nothing");
             Jump = 0;

@@ -24,7 +24,6 @@ public class AbnormalDao {
     private Integer Peoplecontact;
     private Integer Communitycontact;
 
-    private double Longitude;
-    private double Latitude;
+    private String Location;
     private Date Time;
 }

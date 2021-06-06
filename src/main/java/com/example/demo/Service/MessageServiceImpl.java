@@ -31,8 +31,7 @@ public class MessageServiceImpl implements MessageService{
         messageDao.setHealthcondition(message.getHealthcondition());
         messageDao.setRisklocation(message.getRisklocation());
         messageDao.setRiskcontact(message.getRiskcontact());
-        messageDao.setLongitude(message.getLongitude());
-        messageDao.setLatitude(message.getLatitude());
+        messageDao.setLocation(message.getLocation());
         messageDao.setTime(message.getTime());
 
         messageRepository.save(messageDao);

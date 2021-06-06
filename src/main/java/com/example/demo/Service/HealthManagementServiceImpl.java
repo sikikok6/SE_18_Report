@@ -31,9 +31,8 @@ public class HealthManagementServiceImpl implements HealthManagementService {
             info.setHealthcondition((Boolean) object[5] ? 1 : 0);
             info.setRiskcontact((Boolean) object[6] ? 1 : 0);
             info.setRisklocation((Boolean) object[7] ? 1 : 0);
-            info.setLatitude((Double) object[8]);
-            info.setLongitude((Double) object[9]);
-            info.setTime((Date) object[10]);
+            info.setLocation((String) object[8]);
+            info.setTime((Date) object[9]);
             allInfos.add(info);
         }
 

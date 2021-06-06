@@ -18,5 +18,6 @@ public class BasicInfoDao {
     private String Name;
     private Integer Sex;
     private String Tel;
+    private Integer Auth;
 
 }

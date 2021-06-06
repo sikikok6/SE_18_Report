@@ -27,9 +27,6 @@ public class WxMessageController {
         String msg = messageService.MessageReport(message);
 
 
-
-
-
         return MessageVO.builder().
                 code("200").msg(msg).status(1).
                 build();

@@ -25,6 +25,7 @@ public class RegisterServiceImpl implements RegisterService{
         basicInfoDao.setName(basicInfo.getName());
         basicInfoDao.setSex(basicInfo.getSex());
         basicInfoDao.setTel(basicInfo.getTel());
+        basicInfoDao.setAuth(0);
 
 
 

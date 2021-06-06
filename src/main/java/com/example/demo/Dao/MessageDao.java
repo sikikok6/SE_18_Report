@@ -14,8 +14,7 @@ public class MessageDao {
     private Integer Healthcondition;
     private Integer Risklocation;
     private Integer Riskcontact;
-    private double Longitude;
-    private double Latitude;
+    private String Location;
     private Date Time;
 
 }
