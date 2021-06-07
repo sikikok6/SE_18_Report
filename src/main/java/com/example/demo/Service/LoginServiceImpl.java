@@ -37,7 +37,7 @@ public class LoginServiceImpl implements LoginService {
 
             }else{
                 //TODO 改为2 Auth
-                Jump = 1;
+                Jump = 2;
                 System.out.println("Admin");
             }
 

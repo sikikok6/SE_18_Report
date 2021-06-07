@@ -1,10 +1,7 @@
 package com.example.demo.Service;
 
 
-import com.example.demo.Dao.BasicInfoDao;
-import com.example.demo.Dao.BasicInfoRepository;
-import com.example.demo.Dao.MessageDao;
-import com.example.demo.Dao.MessageRepository;
+import com.example.demo.Dao.*;
 import com.example.demo.Response.UserCodeVO;
 import org.springframework.stereotype.Service;
 
@@ -17,11 +14,14 @@ public class UserCodeServiceImpl implements UserCodeService{
     @Resource
     private MessageRepository messageRepository;
 
+    @Resource
+    private ApplyRepository applyRepository;
+
     @Override
     public UserCodeVO GetState(String OpenId){
         Optional<MessageDao> messageDaoOptional = messageRepository.findById(OpenId);
 
-        int State = -1;
+        int State = -2;
 
         MessageDao messageDao = new MessageDao();
 
@@ -29,10 +29,30 @@ public class UserCodeServiceImpl implements UserCodeService{
             System.out.println("UserCode:User Is Present;");
             messageDao = messageDaoOptional.get();
             if(messageDao.getHealthcondition()+messageDao.getRiskcontact()+messageDao.getRisklocation()>0){
-                State = 1;
+                State = -1;
                 return UserCodeVO.builder().State(State).Msg("UserCode:State Dangerous").build();
             }else{
-                State = 0;
+                //No Apply
+                if(applyRepository.CountSeq(OpenId)==null){
+                    State = 1;
+                }else{
+                    int Seq = applyRepository.CountSeq(OpenId);
+                    ApplyID applyID = new ApplyID(OpenId,Seq);
+                    Optional<ApplyDao> applyDaoOptional = applyRepository.findById(applyID);
+
+                    if (!applyDaoOptional.isPresent()){
+                        System.out.println("Error:QRcode Can't Find");
+                    }else {
+                        ApplyDao applyDao = applyDaoOptional.get();
+                        if(applyDao.getPermit()!=1){
+                            State = 0;
+                        }else {
+                            State =1;
+                        }
+                    }
+
+                }
+
                 return UserCodeVO.builder().State(State).Msg("UserCode:State Ok").build();
             }
         }else{
